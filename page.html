@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body onload="getapi() , move('container')">
+    <div id="header">
+    
+          <h1>HEADING</h1>
+    </div>
+    <div id="container" class="container">
+      <label>Street: </label>
+      <p id="street"></p>
+      <label>City: </label>
+      <p id="city"></p>
+      <label>State: </label>
+      <p id="state"></p>
+      <label>Country: </label>
+      <p id="country"></p>
+      <label>Zip Code: </label>
+      <p id="zip"></p>
+      <label>IPV4: </label>
+      <p id="ip"></p>
+    </div>
+
+    <script>
+      var dragValue;
+      function move(id) {
+        var element = document.getElementById("container");
+        element.style.position = "absolute";
+        element.onmousedown = function () {
+          dragValue = element;
+        };
+      }
+      document.onmouseup = function (e) {
+        dragValue = null;
+      };
+      document.onmousemove = function (e) {
+        var x = e.pageX;
+        var y = e.pageY;
+        dragValue.style.left = x + "px";
+        dragValue.style.top = y + "px";
+      };
+
+      const street = document.getElementById("street");
+      const city = document.getElementById("city");
+      const state = document.getElementById("state");
+      const country = document.getElementById("country");
+      const zip = document.getElementById("zip");
+      const ip = document.getElementById("ip");
+
+      function getapi() {
+        fetch("http://ip-api.com/json")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            street.innerHTML = data.region;
+            city.innerHTML = data.city;
+            state.innerHTML = data.regionName;
+            country.innerHTML = data.country;
+            zip.innerHTML = data.zip;
+            ip.innerHTML = data.query;
+          });
+      }
+    </script>
+  </body>
+</html>

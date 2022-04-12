@@ -1,0 +1,41 @@
+ 
+.container{
+     display: flex;
+        flex-direction: column;
+    padding-top: 10px ;
+   
+   
+ 
+border: 1px solid black;
+box-shadow: 10px 10px gray;
+    
+ }
+ p{ 
+        
+        margin-top: -17px;
+        margin-left: 100px;
+ }
+ #header{
+     display: flex;
+        flex-direction: row;
+ }
+ 
+ 
+    body:before{
+        content: 'ROBIN ALEXANDER';
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        
+        color: gray;
+        font-size: 100px;
+        font-weight: 500px;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        opacity: 0.3;
+        transform: rotate(-35deg);
+      }
